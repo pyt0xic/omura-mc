@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  minecraft:
+    image: itzg/minecraft-server
+    volumes:
+      - "./data:/data"
+      - "./config:/data/config"
+    ports:
+      - "25565:25565"
+      - "25566:25566/udp"
+    environment:
+      MOD_PLATFORM: MODRINTH
+      MODRINTH_PROJECT: adrenaserver
+      MODRINTH_PROJECTS: fallingtree,plasmo-voice,spellbound-weapons,axes-are-weapons,travelersbackpack,better-than-mending,mob-captains,expanded-axe-enchanting,expanded-weapon-enchanting,expanded-armor-enchanting,expanded-trident-enchanting,gravestones,farmers-delight-fabric,waystones,ct-overhaul-village,cc-tweaked,ctov-waystone-compat,ctov-farmers-delight-compat
+      EULA: "TRUE"
+      MAX_MEMORY: 2G
+      SEED: "-3675652194237789176"
+      ALLOW_NETHER: "true"
+      USE_AIKAR_FLAGS: "true"
+      MAX_BUILD_HEIGHT: 256
+      VIEW_DISTANCE: 16
+      USE_SIMD_FLAGS: "true"
+      # LEVEL_TYPE: LARGEBIOMES
+      MAX_PLAYERS: 10
+      # CONSOLE: "false"
+      TUNE_VIRTUALIZED: "TRUE"
+      # ENABLE_ROLLING_LOGS: ""
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: ${PASSWORD?Variable not set}
+      # RCON_CMDS_STARTUP:  |-
+      #   chunky spawn
+      #   chunky radius 2500
+      #   chunky start
+    networks:
+      - minecraft
+
+  rcon:
+    image: itzg/rcon
+    environment:
+      RWA_USERNAME: admin
+      RWA_PASSWORD: admin
+      RWA_ADMIN: "TRUE"
+      # is referring to the hostname of 'mc' compose service below
+      RWA_RCON_HOST: minecraft
+      # needs to match the RCON_PASSWORD configured for the container
+      RWA_RCON_PASSWORD: ${PASSWORD?Variable not set}
+    ports:
+      - 4326:4326
+      - 4327:4327
+    volumes:
+      - "rcon1:/opt/rcon-web-admin/db"
+    networks:
+      - minecraft
+
+volumes:
+  mcbig1:
+  rcon1:
+networks:
+  minecraft:
