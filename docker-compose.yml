@@ -12,14 +12,14 @@ services:
     environment:
       MOD_PLATFORM: MODRINTH
       MODRINTH_PROJECT: adrenaserver
-      MODRINTH_PROJECTS: fallingtree,plasmo-voice,spellbound-weapons,axes-are-weapons,travelersbackpack,better-than-mending,mob-captains,expanded-axe-enchanting,expanded-weapon-enchanting,expanded-armor-enchanting,expanded-trident-enchanting,gravestones,farmers-delight-fabric,waystones,ct-overhaul-village,cc-tweaked,ctov-waystone-compat,ctov-farmers-delight-compat
+      MODRINTH_PROJECTS: fallingtree,plasmo-voice,spellbound-weapons,axes-are-weapons,travelersbackpack,better-than-mending,mob-captains,expanded-axe-enchanting,expanded-weapon-enchanting,expanded-armor-enchanting,expanded-trident-enchanting,gravestones,farmers-delight-fabric,waystones,ct-overhaul-village,cc-tweaked,ctov-farmers-delight-compat,jei
       EULA: "TRUE"
-      MAX_MEMORY: 2G
+      MAX_MEMORY: 1G
       SEED: "-3675652194237789176"
       ALLOW_NETHER: "true"
       USE_AIKAR_FLAGS: "true"
       MAX_BUILD_HEIGHT: 256
-      VIEW_DISTANCE: 16
+      VIEW_DISTANCE: 12
       USE_SIMD_FLAGS: "true"
       # LEVEL_TYPE: LARGEBIOMES
       MAX_PLAYERS: 10
